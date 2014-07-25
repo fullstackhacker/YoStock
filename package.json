@@ -24,6 +24,7 @@
   "homepage": "https://github.com/kapadiamush/YoStock",
   "dependencies": {
     "express": "^4.6.1",
+    "pg": "^3.4.0",
     "request": "^2.38.0"
   }
 }
