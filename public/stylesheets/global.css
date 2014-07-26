@@ -1,0 +1,45 @@
+body { 
+	background-color: purple; 
+	font-family: 'Montserrat', arial, sans-serif;
+	color: white;
+} 
+
+header { 
+	text-align: center; 
+}
+
+h1 { 
+	font-size: 5em; 
+	margin: 25px 0px;	
+}
+
+h2 { 
+	font-size: 3em; 
+	margin: 25px 0px;	
+}
+
+section { 
+	text-align: center; 
+}
+
+.input { 
+	font-size: 1.3em;	
+	text-align: center;
+} 
+
+.input:focus {
+	text-align: left; 
+}
+
+#submit { 
+	display: block;
+	margin: 25px auto;
+	font-size: 1.7em;
+	width: 705px;
+} 
+
+#formtitle { 
+	margin-top: 10%;
+	margin-bottom: 2%;
+	font-size: 1.5em;
+} 
