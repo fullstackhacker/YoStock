@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 /* routes */
 app.get('/', function(req, res){ //root route
-	res.sendfile(__dirname + "/public/views/register.html");
+	res.sendfile("public/views/register.html");
 });
 
 app.get('/yo/:username', function(req, res){ //send a yo
