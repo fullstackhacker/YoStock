@@ -3,7 +3,7 @@ var connstring = process.env.DATABASE_URL;
 var table = process.env.TABLE;
 
 
-var register = function(username, symbol, price, range){ 
+var register = function(username, symbol, price, range, next){ 
 	range = '0';
 	var answer = false;
 	pg.connect(connstring, function(error, client, done){ 
@@ -21,10 +21,10 @@ var register = function(username, symbol, price, range){
 			}
 			console.log("RESULT:");
 			console.log(result);
-			ansswer =  true;	
+			answer =  true;	
+			next();
 		});
 	});
-	return answer;
 };
 
 module.exports = { 'register': register };
