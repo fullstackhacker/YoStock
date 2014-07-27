@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 /* routes */
 app.get('/', function(req, res){ //root route
-	res.sendfile("public/views/register.html");
+	res.sendfile("./public/views/register.html");
 });
 
 app.get('/yo/:username', function(req, res){ //send a yo
@@ -20,10 +20,12 @@ app.get('/yo/:username', function(req, res){ //send a yo
 
 app.post('/register', function(req, res){ 
 	console.log(req.body);
-	register.register(req.body.username, req.body.symbol, req.body.price);
+	var good = register.register(req.body.username, req.body.symbol, req.body.price);
+	if(good) return res.send("./public/views/success.html"); 
+	return res.send("./public/views/failure.html");
 });
 
-/* static routes */
+/* static routes 
 app.get('/public/stylesheets/global.css', function(req, res){ // stylesheet route
 	res.sendfile("./public/stylesheets/global.css");
 });
@@ -35,6 +37,7 @@ app.get('/public/stylesheets/reset.css', function(req, res){ // stylesheet route
 app.get('/public/scripts/register.js', function(req, res){
 	res.sendfile("./public/scripts/register.js");
 });
+*/
 
 /* port */
 var port = Number(process.env.PORT || 5000);
