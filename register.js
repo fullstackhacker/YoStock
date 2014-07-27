@@ -11,13 +11,15 @@ var register = function(username, symbol, price, range){
 			console.log(error); 
 			answer = false; 
 		}
-		var query = 'INSERT INTO ' + table + ' VALUES (' + username + ', ' + symbol + ', ' + price + ', ' + range + ');';	
+		var query = 'INSERT INTO ' + table + ' VALUES (\'' + username + '\', \'' + symbol + '\', \'' + price + '\', \'' + range + '\');';	
 		console.log(query);
 		client.query(query, function(err, result){ 
+			console.log(query);
 			done();
 			if(err){
 				answer = false;
 			}
+			console.log("RESULT:");
 			console.log(result);
 			ansswer =  true;	
 		});
