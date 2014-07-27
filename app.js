@@ -25,7 +25,7 @@ app.post('/register', function(req, res){
 	return res.send("./public/views/failure.html");
 });
 
-/* static routes 
+/* static routes */
 app.get('/public/stylesheets/global.css', function(req, res){ // stylesheet route
 	res.sendfile("./public/stylesheets/global.css");
 });
@@ -37,7 +37,6 @@ app.get('/public/stylesheets/reset.css', function(req, res){ // stylesheet route
 app.get('/public/scripts/register.js', function(req, res){
 	res.sendfile("./public/scripts/register.js");
 });
-*/
 
 /* port */
 var port = Number(process.env.PORT || 5000);
