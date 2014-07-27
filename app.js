@@ -20,10 +20,7 @@ app.get('/yo/:username', function(req, res){ //send a yo
 
 app.post('/register', function(req, res){ 
 	console.log(req.body);
-	var good = register.register(req.body.username, req.body.symbol, req.body.price, function() { 
-		if(good) res.sendfile('./public/views/success.html');
-		else res.sendfile('./public/views/failure.html'
-		});
+	var good = register.register(req.body.username, req.body.symbol, req.body.price); 
 	});
 });
 
