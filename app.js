@@ -22,10 +22,11 @@ app.post('/register', function(req, res){
 	console.log(req.body);
 	var good = register.register(req.body.username, req.body.symbol, req.body.price); 
 	if(good){ 
+		console.log("GOOD AS SHIT!");
 		var data = { 
 			'registration' : 'success'
 		}
-		res.send(data);
+		res.send([{ 'register': 'success' }]);
 	}
 });
 
