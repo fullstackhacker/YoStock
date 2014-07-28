@@ -21,8 +21,11 @@ app.get('/yo/:username', function(req, res){ //send a yo
 app.post('/register', function(req, res){ 
 	console.log(req.body);
 	var good = register.register(req.body.username, req.body.symbol, req.body.price); 
-	if(good) res.send(bodyParser.stringify('{ "registration": "success" }'));
-	else res.send(bodyParser.stringify('{ "registration": "failure" }'));
+	if(good){ 
+		var data = { 
+			'registration' : 'success'
+		}
+		res.send(data);
 });
 
 /* static routes */
