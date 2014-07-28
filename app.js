@@ -26,6 +26,7 @@ app.post('/register', function(req, res){
 			'registration' : 'success'
 		}
 		res.send(data);
+	}
 });
 
 /* static routes */
