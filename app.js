@@ -20,11 +20,23 @@ app.post('/register', function(req, res){
 		name : req.body.username,
 		symbol : req.body.symbol, 
 		price : req.body.price
-	}; 
+	};
+	
+	for(user in users){ 
+		if(users[user].name == req.body.username && users[user].symbol == req.body.symbol){ 
+			var failed = { 
+				'registration': 'failure' 
+			}
+			console.log(failed);
+			res.json(failed);	
+			return;
+		}
+	}
 	users.push(user);
 	var registration = { 
 		'registration': 'success'
 	}
+	console.log(registration);
 	res.json(registration);
 });
 
@@ -44,7 +56,7 @@ app.get('/public/scripts/register.js', function(req, res){
 /* App check against yahoo's API every second */
 setInterval(function (){ 
 	for(user in users){
-		console.log(users);
+//		console.log(users);
 
 		var url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quote%20where%20symbol%20%3D%20%27"+users[user].symbol+"%27%3B&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 
@@ -52,7 +64,7 @@ setInterval(function (){
 			var jbody = JSON.parse(body);
 			var lastPrice = Number(jbody.query.results.quote.LastTradePriceOnly);
 			if(users[user]  && lastPrice == users[user].price){ 
-				console.log("FOUND A MATCH-- YO! :: " + users[user].name);
+	//			console.log("FOUND A MATCH-- YO! :: " + users[user].name);
 				yo.yo(users[user].name); //send a yo to that user
 				users.splice(user, 1);
 				return;
