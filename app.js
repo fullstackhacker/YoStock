@@ -53,9 +53,9 @@ app.get('/public/scripts/register.js', function(req, res){
 	res.sendfile("./public/scripts/register.js");
 });
 
-app.get('/public/images/favicon.ico', function(req. res){
+app.get('/public/images/favicon.ico', function(req, res){
 	res.sendfile("./public/images/favicon.ico");
-}
+});
 
 /* App check against yahoo's API every second */
 setInterval(function (){ 
