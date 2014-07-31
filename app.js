@@ -53,6 +53,10 @@ app.get('/public/scripts/register.js', function(req, res){
 	res.sendfile("./public/scripts/register.js");
 });
 
+app.get('/public/images/favicon.ico', function(req. res){
+	res.sendfile("./public/images/favicon.ico");
+}
+
 /* App check against yahoo's API every second */
 setInterval(function (){ 
 	for(user in users){
@@ -63,7 +67,7 @@ setInterval(function (){
 		request.get(url, function(err, response, body){ 
 			var jbody = JSON.parse(body);
 			var lastPrice = Number(jbody.query.results.quote.LastTradePriceOnly);
-			if(users[user]  && lastPrice == users[user].price){ 
+			if(users[user] && lastPrice == users[user].price){ 
 	//			console.log("FOUND A MATCH-- YO! :: " + users[user].name);
 				yo.yo(users[user].name); //send a yo to that user
 				users.splice(user, 1);
