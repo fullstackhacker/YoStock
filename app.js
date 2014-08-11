@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var queryString = require('querystring');
 var request = require('request');
 var yo = require('./yo');
+var pg = require('pg');
 
 var app = express();
 
@@ -12,9 +13,7 @@ var users = new Array();
 
 /* routes */
 app.get('/', function(req, res){ //root route
-	res.sendfile("./public/views/register.html");
-});
-
+	res.sendfile("./public/views/register.html"); }); 
 app.post('/register', function(req, res){ 
 	var user = { 
 		name : req.body.username,
@@ -78,6 +77,47 @@ setInterval(function (){
 		continue;
 	}
 }, 1000);
+
+/* backup the user list every 1 second */
+setInterval(function(){
+	pg.connect(process.env.DATABASE_URL, function(err, client, done){ 
+		client.query("DELETE FROM " + process.env.TABLE + ";", function(err, result){ 
+			done();
+			if(err){ 
+				console.log(err); 
+			} 
+			console.log(result);
+			}
+		);
+		for(user in users){ 
+			client.query("INSERT INTO " + process.env.TABLE + " VALUES( " + users[user].name + ", " + users[user].symbol + ", " + users[user].price + ", " + users[user].range + ");", function(err, result){ 
+				done(); 
+				if(err) console.log(err); 
+				console.log(result);
+				}	
+			);
+		}
+	}); 
+}, 1000); 
+
+
+/* load from the database on start up */
+pg.connect(process.env.DATABASE_URL, function(err, client, done){ 
+	client.query("SELECT * FROM " + process.env.TABLE ";" , function(err, result){ 
+		if(err) console.log(err);	
+		else{ 
+			for(row in result.rows){ 
+				var user = { 
+					name: row[0], 
+					symbol: row[1], 
+					price: row[2], 
+					range: row[3]
+				}
+				users.push(user);
+			} 
+	});
+);
+
 
 /* port */
 var port = Number(process.env.PORT || 5000);
