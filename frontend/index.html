@@ -8,9 +8,61 @@
 
         <title>YoStock | Monitor Yo' Stocks</title>
 
+        <!--Backbone-->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.1/backbone-min.js"></script>
+
+        <!--boostrap it--> 
+        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/global.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
         
     </head>
     <body>
+        <div id="content">
 
+        </div>
+
+        <script type="text/template" id="homeTemplate">
+            <div class="container-fluid" id="home">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1 class="text-center">Yo Stock</h1>
+                    </div>
+                    <div class="col-xs-12">
+                        <h2 class="text-center">Monitor Yo&#39; Stocks</h2>
+                    </div>
+                </div> 
+                <div class="row" id="monitor-form">
+                    <div class="col-xs-2 col-xs-offset-2">
+                        <input type="text" class="input input-text" id="username" placeholder="Username">
+                    </div>
+                    <div class="col-xs-2">
+                        <input type="text" class="input input-text" id="symbol" placeholder="Symbol">
+                    </div>
+                    <div class="col-xs-2">
+                        <input type="number" class="input input-number" id="price" placeholder="Price">
+                    </div>
+                    <div class="col-xs-2">
+                        <input type="number" class="input input-number" id="range" placeholder="+/- Range">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <p class="btn btn-primary" id="monitor-button">Monitor Yo&#39; Stock</p>
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <script src="/js/config.js"></script>
+        <script src="/js/views/homeView.js"></script>
+        <script src="/js/router.js"></script>
     </body>
+
+
+
 </html>

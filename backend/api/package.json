@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "DBURL=mongodb://localhost/YoStock_DEV node ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "amqp": "^0.2.4",

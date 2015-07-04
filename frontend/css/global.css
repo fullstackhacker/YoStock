@@ -1,0 +1,22 @@
+#home { 
+    height: 100%;
+    padding-top: 10%;
+    color: white;
+    background-color: purple;
+}
+
+#monitor-form { 
+    margin: 3%;
+}   
+
+#monitor-button { 
+    font-size: 2em;
+}
+
+.input { 
+    color: black;
+    font-size: 2em;
+    width: 100%;
+    border-radius: 5px;
+    text-align: center
+}

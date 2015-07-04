@@ -1,5 +1,4 @@
 var express = require('express');
-var Stock = require('../models/stock');
 var amqp = require('amqp');
 
 var router = express.Router();
@@ -29,23 +28,6 @@ router.post('/signup', function(req, res){
     stock.price = req.body.price; 
     stock.range = req.body.range;
 
-    //add it to the database
-    stock.save(function(err){
-        if(err){
-            return res.json({
-                status: false, 
-                message: 'Failed to process the request fully.'
-            });
-        }
-
-        return res.json({
-            status: true,
-            message: 'Your request has been processed.'
-        });
-
-        //console.log("Saved to do the database: " + req.body.username + " " + req.body.symbol);
-    });
-
     var stockOutputString = "Username: " + stock.username + " | Symbol: " + stock.symbol + " | Price: " + stock.price + " | Range: " + stock.range; 
 
     //send message to python script to do heavy lifting
@@ -57,22 +39,5 @@ router.post('/signup', function(req, res){
         });
     });
 });
-
-//deregister from yostock
-router.delete('/deregister/:id', function(req, res){
-    Stock.remove({'_id': req.params.id}, function(err){
-        if(err){
-            return res.json({
-                status: false, 
-                error: err
-            });
-        }
-
-        return res.json({
-            status: true
-        });
-    });
-});
-
 
 module.exports = router;

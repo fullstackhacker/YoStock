@@ -39,15 +39,9 @@ def stalk(stock):
             res = requests.post('http://api.justyo.co/yo/', params=data)
             print res
 
-
             bad = False
         else: 
             share.refresh()
-
-    # send request to delete it
-    _id = stock['_id']
-    deleteUrl = "http://localhost/api/deregister/" + _id
-   # res = requests.delete(deleteUrl)
 
 '''
 callback for the queue
