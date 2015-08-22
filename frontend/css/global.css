@@ -14,9 +14,11 @@
 }
 
 .input { 
-    color: black;
+    background-color: purple;
+    text-decoration: underline;
     font-size: 2em;
     width: 100%;
     border-radius: 5px;
-    text-align: center
+    text-align: center;
+    border: none;
 }
